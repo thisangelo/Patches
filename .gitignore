@@ -1,0 +1,11 @@
+.DB_Store
+Thumbs.db
+desktop.ini
+
+.vscode/
+.idea/
+*.swp
+*.tmp
+
+*.log
+.env

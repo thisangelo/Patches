@@ -1,0 +1,33 @@
+#!/bin/bash
+# Opens a new window in the folder from which it was called
+exec ptyxis --new-window --working-directory=“$PWD”
+# --new-window: new window (use --tab for a tab in the existing window)
+# --working-directory: starting folder, the one passed by the file manager in $PWD
+#
+#
+# PATH to install in /usr/local/bin
+# ACTIVATION (each user, once only, in their own session):
+#
+# TO INSTALL IT, USE THE FOLLOWING COMMAND
+# sudo install -m 755 ./Open_a_terminal_here /usr/local/bin/Open_a_terminal_here
+#
+# EDIT THE PATH WHERE THE SCRIPT IS LOCATED
+#
+# SCRIPT AVAILABLE FOR:
+#
+# Dolphin (KDE Plasma 6):
+#
+#   kwriteconfig6 --file kdeglobals --group General --key TerminalApplication /usr/local/bin/Open_a_terminal_here
+#   kwriteconfig6 --file kdeglobals --group General --key TerminalService --delete
+#   (then: pkill dolphin and reopen it)
+#
+# Nemo (Cinnamon):
+#
+#   gsettings set org.cinnamon.desktop.default-applications.terminal exec ‘/usr/local/bin/Open_a_terminal_here’
+#   gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg ‘’
+#   (then: nemo -q and reopen it)
+#
+#
+# # If Ptyxis is a Flatpak, it must be installed system-wide, not just for the user.
+#
+# github@thisangelo
