@@ -1,0 +1,33 @@
+#!/bin/bash
+# ==============================================================================
+# NAME:        Open_a_terminal_here
+# DESCRIPTION: Opens Ptyxis terminal in the current directory from file managers.
+# AUTHOR:      github@thisangelo
+# ==============================================================================
+
+# --- EXECUTION ---
+exec ptyxis --new-window --working-directory="$PWD"
+
+# --- PARAMETERS ---
+# --new-window        : Opens a new terminal window (use --tab for a tab in an existing window).
+# --working-directory : Starting folder passed by the file manager via $PWD.
+
+# --- INSTALLATION ---
+# Target PATH: /usr/local/bin/Open_a_terminal_here
+# Command:
+# sudo install -m 755 ./Open_a_terminal_here /usr/local/bin/Open_a_terminal_here
+
+# --- DESKTOP INTEGRATION / CONFIGURATION ---
+# Dolphin (KDE Plasma 6):
+#   kwriteconfig6 --file kdeglobals --group General --key TerminalApplication /usr/local/bin/Open_a_terminal_here
+#   kwriteconfig6 --file kdeglobals --group General --key TerminalService --delete
+#   pkill dolphin
+#
+# Nemo (Cinnamon):
+#   gsettings set org.cinnamon.desktop.default-applications.terminal exec '/usr/local/bin/Open_a_terminal_here'
+#   gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg ''
+#   nemo -q
+
+# --- OVERRIDES / ALTERNATIVES ---
+# If Ptyxis is installed via Flatpak (system-wide), the command on line 9 is:
+#   flatpak run org.gnome.Ptyxis --tab --working-directory="$PWD"

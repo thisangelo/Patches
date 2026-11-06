@@ -8,12 +8,13 @@
 ## Index
 
 * [Available patches and their reason](#available-patches-and-their-reason)
-  * [Open_a_terminal_here](#open_a_terminal_here)
+  * [Open A Terminal Here](#open-a-terminal-here)
+  * [DC Offset Pop Audio](#dc-offset-pop-audio)
 * [Operating system specifications](#operating-system-specifications)
 ---
 ## Available patches and their reason:
 
-### **Open_a_terminal_here**
+### **Open A Terminal Here**
 Makes the `Open a terminal here` option of file managers work in the other  
 terminals that are not native, in this case for Ptyxis (GNOME Terminal Emulator).
 
@@ -26,6 +27,22 @@ terminals that are not native, in this case for Ptyxis (GNOME Terminal Emulator)
 * [Dolphin](https://apps.kde.org/en/dolphin/)
 
 * [Nemo](https://github.com/linuxmint/nemo)
+
+---
+
+### **DC Offset Pop Audio**
+It prevents that clicking sound or faint noise from coming through the speakers  
+when the computer restarts—an annoying problem that only occurs when restarting  
+under Linux—by having SystemD run this external patch to resolve the issue.
+
+**Tested Linux Distribution:**
+
+* [Fedora 44 KDE Plasma](https://fedoraproject.org/kde/)
+
+**Tested Computer**
+
+* [HP Laptop 14-ep0xxx](https://support.hp.com/us-en/product/troubleshooting/hp-14-inch-laptop-pc-14-ep0000/model/2102175168?sku=A47CQLA&serialnumber=1H944802WM)
+
 ---
 ### Operating system specifications
 
