@@ -1,0 +1,15 @@
+#!/bin/sh
+# ==============================================================================
+# NAME:        fix-sof-reboot.shutdown
+# DESCRIPTION: Unbinds the Intel SOF audio driver on system reboot to eliminate
+#              DC Offset Pop / speaker electrical clicks.
+# AUTHOR:      github@thisangelo
+# ==============================================================================
+
+# --- EXECUTION ---
+#if [ "$1" = "reboot" ]; then
+#    if [ -d "/sys/bus/pci/drivers/sof-audio-pci-intel-tgl" ]; then
+#        echo 0000:00:1f.3 > /sys/bus/pci/drivers/sof-audio-pci-intel-tgl/unbind 2>/dev/null || true
+#    fi
+#fi
+#

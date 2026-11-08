@@ -1,4 +1,4 @@
-.DB_Store
+.DS_Store
 Thumbs.db
 desktop.ini
 
@@ -9,3 +9,4 @@ desktop.ini
 
 *.log
 .env
+.prompt

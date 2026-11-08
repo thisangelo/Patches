@@ -5,14 +5,16 @@ A lightweight Bash script designed to integrate **Ptyxis** as the default termin
 ---
 
 ## Problem
-In desktop environments like KDE Plasma 6 or Cinnamon, setting custom terminal emulators (like **Ptyxis**) to open directly from file managers often fails to pass the current working directory (`$PWD`) correctly, or fails entirely when handling native (RPM/DEB) vs. Flatpak package arguments.
+In desktop environments like KDE Plasma 6 or Cinnamon, setting custom terminal emulators (like **Ptyxis**) to open directly from file managers often fails to pass the current working directory (`$PWD`) correctly, or fails entirely because native (RPM/DEB) and Flatpak packages expect different arguments.
 
-> **Compatibility Note:** This patch targets file manager terminal invocation behavior. Arguments and path variables depend on your desktop environment settings and Ptyxis installation type.
+> **Note:** The issue is not in Ptyxis itself, but in how file managers launch custom terminals and pass the working directory. This script acts as an intermediary with a fixed name and builds the correct command for you.
 
 ---
 
 ## Solution
-A clean Bash wrapper script installed system-wide (`/usr/local/bin`) that catches the `$PWD` environment variable passed by the file manager and properly passes it to **Ptyxis**, ensuring new windows or tabs open seamlessly in the active directory.
+A clean Bash wrapper script installed system-wide (`/usr/local/bin`) that captures the `$PWD` environment variable passed by the file manager and properly passes it to **Ptyxis**, ensuring new windows or tabs open seamlessly in the active directory.
+
+> **Tested on:** Fedora Linux (KDE Plasma 6). Other distributions and Cinnamon/Nemo should work but are untested.
 
 ---
 
@@ -27,11 +29,46 @@ A clean Bash wrapper script installed system-wide (`/usr/local/bin`) that catche
 
 ## Installation
 
-1. Clone or download this repository.
-2. Grant execution permissions and install the script to the system path:
+1. Detect the installation method.
+
+To check how Ptyxis is installed, run:
 
 ```bash
-sudo install -m 755 ./Open_a_terminal_here /usr/local/bin/Open_a_terminal_here
+rpm -q ptyxis 2>/dev/null && echo RPM
+dpkg -s ptyxis 2>/dev/null && echo DEB
+flatpak list 2>/dev/null | grep -i ptyxis && echo Flatpak
+```
+
+2. Create the script depending on the installation method of Ptyxis.
+
+- RPM/DEB
+
+```bash
+sudo tee /usr/local/bin/Open_a_terminal_here << 'EOF'
+#!/bin/bash
+
+exec ptyxis --new-window --working-directory="$PWD"
+EOF
+```
+
+- Flatpak
+
+```bash
+sudo tee /usr/local/bin/Open_a_terminal_here << 'EOF'
+#!/bin/bash
+
+exec flatpak run org.gnome.Ptyxis --new-window --working-directory="$PWD"
+EOF
+```
+
+*(Or use `--tab` instead of `--new-window` if you prefer to open tabs inside an existing window).*
+
+> **Flatpak note:** If Ptyxis is installed as a Flatpak, the sandbox may block access to paths outside `$HOME` (e.g. `/mnt/...`), and the terminal would open in `~` instead. To check the current permissions, run `flatpak info --show-permissions org.gnome.Ptyxis`.
+
+3. Make the script executable:
+
+```bash
+sudo chmod 755 /usr/local/bin/Open_a_terminal_here
 ```
 
 ---
@@ -64,31 +101,6 @@ nemo -q
 
 ---
 
-## Flatpak Support
-
-If you use **Ptyxis** as a Flatpak package (system or user installation), edit the third execution line in `/usr/local/bin/Open_a_terminal_here`:
-
-**Replace:**
-```bash
-exec ptyxis --new-window --working-directory="$PWD"
-```
-
-**With:**
-```bash
-flatpak run org.gnome.Ptyxis --new-window --working-directory="$PWD"
-```
-
-*(Or use `--tab` instead of `--new-window` if you prefer to open tabs inside an existing window).*
-
----
-
-## Additional Ptyxis Options
-
-- `--new-window`: Opens a standalone terminal window in the current directory.
-- `--tab`: Opens a tab inside an already active Ptyxis window.
-
----
-
 ## Author
 
-Created and maintained by [@thisangelo](https://github.com/thisangelo).
+Created and maintained by [@thisangelo](https://github.com/thisangelo)

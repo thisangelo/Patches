@@ -1,0 +1,12 @@
+#!/bin/bash
+# ==============================================================================
+# NAME:        Open_a_terminal_here
+# DESCRIPTION: Opens Ptyxis terminal in the current directory from file managers.
+# AUTHOR:      github@thisangelo
+# ==============================================================================
+
+# --- EXECUTION FOR DNF ---
+# exec ptyxis --new-window --working-directory="$PWD"
+
+# --- EXECUTION FOR Flatpak ---
+# exec flatpak run org.gnome.Ptyxis --new-window --working-directory="$PWD"

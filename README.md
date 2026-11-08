@@ -28,6 +28,8 @@ terminals that are not native, in this case for Ptyxis (GNOME Terminal Emulator)
 
 * [Nemo](https://github.com/linuxmint/nemo)
 
+**Details and installation:** [Open A Terminal Here](Open%20A%20Terminal%20Here/)
+
 ---
 
 ### **DC Offset Pop Audio**
@@ -39,9 +41,11 @@ under Linux—by having SystemD run this external patch to resolve the issue.
 
 * [Fedora 44 KDE Plasma](https://fedoraproject.org/kde/)
 
-**Tested Computer**
+**Tested Computer:**
 
 * [HP Laptop 14-ep0xxx](https://support.hp.com/us-en/product/troubleshooting/hp-14-inch-laptop-pc-14-ep0000/model/2102175168?sku=A47CQLA&serialnumber=1H944802WM)
+
+**Details and installation:** [DC Offset Pop Audio](DC%20Offset%20Pop%20Audio/)
 
 ---
 ### Operating system specifications
