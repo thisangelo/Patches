@@ -1,4 +1,4 @@
-# Intel SOF Reboot Audio Pop Fix (`fix_sof_reboot_pop`)
+# Intel SOF Reboot Audio Pop Fix (DC Offset Pop)
 
 A lightweight systemd shutdown hook that eliminates electrical pop sounds (*DC Offset Pop*) on Intel laptops during system reboot.
 

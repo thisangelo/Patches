@@ -14,7 +14,7 @@ In desktop environments like KDE Plasma 6 or Cinnamon, setting custom terminal e
 ## Solution
 A clean Bash wrapper script installed system-wide (`/usr/local/bin`) that captures the `$PWD` environment variable passed by the file manager and properly passes it to **Ptyxis**, ensuring new windows or tabs open seamlessly in the active directory.
 
-> **Tested on:** Fedora Linux (KDE Plasma 6). Other distributions and Cinnamon/Nemo should work but are untested.
+> **Tested on:** Fedora Linux (KDE Plasma 6) with Dolphin and Nemo.
 
 ---
 
@@ -22,7 +22,7 @@ A clean Bash wrapper script installed system-wide (`/usr/local/bin`) that captur
 
 - Opens **Ptyxis** automatically pointing to the `$PWD` path invoked by the file manager.
 - Compatible with native Ptyxis packages (RPM/DEB) as well as Flatpak installations.
-- Support for **KDE Plasma 6** and **Cinnamon (Nemo)**.
+- Support for **KDE Plasma 6**.
 - Easy installation into `/usr/local/bin`.
 
 ---
